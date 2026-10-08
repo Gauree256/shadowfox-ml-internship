@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import joblib
 
 df = pd.read_csv("HousingData.csv")
 print(df.head())
@@ -95,3 +96,29 @@ print("\nRandom Forest:")
 print("MAE :", rf_mae)
 print("RMSE:", rf_rmse)
 print("R²  :", rf_r2)
+
+joblib.dump(random_forest_model, "random_forest_model.pkl")
+
+print("\nFinal Random Forest model saved successfully.")
+
+joblib.dump(imputer, "imputer.pkl")
+joblib.dump(scaler, "scaler.pkl")
+joblib.dump(random_forest_model, "random_forest_model.pkl")
+
+plt.figure(figsize=(8, 6))
+
+plt.scatter(y_test, random_forest_pred)
+
+plt.xlabel("Actual House Prices")
+plt.ylabel("Predicted House Prices")
+plt.title("Actual vs Predicted House Prices")
+
+plt.plot(
+    [y_test.min(), y_test.max()],
+    [y_test.min(), y_test.max()]
+)
+
+plt.show()
+
+print("\nFinal Model: Random Forest")
+print("Reason: It achieved lower MAE and RMSE and higher R² than Linear Regression.")
