@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
@@ -11,24 +10,6 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import joblib
 
 df = pd.read_csv("HousingData.csv")
-print(df.head())
-
-print("\nDataset Shape:")
-print(df.shape)
-
-print("\nColumn Names:")
-print(df.columns.tolist())
-
-print("\nData Information:")
-df.info()
-
-print("\nMissing Values:")
-print(df.isnull().sum())
-
-print("\nDuplicate Rows:", df.duplicated().sum())
-
-print("\nStatistical Summary:")
-print(df.describe())
 
 X = df.drop("MEDV", axis=1)
 y = df["MEDV"]
@@ -97,13 +78,11 @@ print("MAE :", rf_mae)
 print("RMSE:", rf_rmse)
 print("R²  :", rf_r2)
 
-joblib.dump(random_forest_model, "random_forest_model.pkl")
-
-print("\nFinal Random Forest model saved successfully.")
-
 joblib.dump(imputer, "imputer.pkl")
 joblib.dump(scaler, "scaler.pkl")
 joblib.dump(random_forest_model, "random_forest_model.pkl")
+
+print("\nFinal Random Forest model saved successfully.")
 
 plt.figure(figsize=(8, 6))
 
