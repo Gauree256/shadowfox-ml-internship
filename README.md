@@ -55,10 +55,6 @@ shadowfox-ml-internship/
 
 Each project folder contains its own README with project-specific information and instructions.
 
-## Purpose
-
-These projects were developed for educational purposes to practice machine learning workflows, model evaluation, data preprocessing, and natural language processing.
-
 ## Note
 
 The predictions and evaluation results are intended for learning and demonstration, not for making real-world financial or other high-stakes decisions.
